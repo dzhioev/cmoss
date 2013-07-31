@@ -51,7 +51,7 @@ export LIBGSASL_VERSION="1.8.0"
 
 # Project version to use to build boost C++ libraries
 export BOOST_VERSION="1.52.0"
-export BOOST_LIBS="chrono context date_time exception filesystem graph graph_parallel iostreams mpi program_options python random regex serialization signals system test thread timer wave"
+export BOOST_LIBS="iostreams system"
 
 # Project version to use to build tinyxml
 export TINYXML_VERSION="2.6.2"
@@ -93,7 +93,7 @@ export ARM_TARGET="armv7"
 
 if [ -z $TOOLCHAIN_VERSION ]
 then
-	export TOOLCHAIN_VERSION="4.7"
+	export TOOLCHAIN_VERSION="4.8"
 fi
 
 # Platforms to build for (changing this may break the build)
@@ -134,62 +134,14 @@ do
 	export DROIDTOOLS=${TMPDIR}/droidtoolchains/${PLATFORM}/bin/${PLATFORM}
 	export SYSROOT=${TMPDIR}/droidtoolchains/${PLATFORM}/sysroot
 
-	# Build minizip
-	${TOPDIR}/build-droid/build-minizip.sh > "${LOGPATH}-minizip.log"
-
-	# Build icu
-	${TOPDIR}/build-droid/build-icu.sh > "${LOGPATH}-icu.log"
-
-	# Build c-ares
-	${TOPDIR}/build-droid/build-cares.sh > "${LOGPATH}-cares.log"
-
 	# Build bzip2
 	${TOPDIR}/build-droid/build-bzip2.sh > "${LOGPATH}-bzip2.log"
-
-	# Build libidn (before curl and gsasl)
-	${TOPDIR}/build-droid/build-libidn.sh > "${LOGPATH}-libidn.log"
-
-	# Build libgpg-error
-	${TOPDIR}/build-droid/build-libgpg-error.sh > "${LOGPATH}-libgpg-error.log"
-
-	# Build libgcrypt
-	${TOPDIR}/build-droid/build-libgcrypt.sh > "${LOGPATH}-libgcrypt.log"
-
-	# Build GnuPG
-	${TOPDIR}/build-droid/build-GnuPG.sh > "${LOGPATH}-GnuPG.log"
 
 	# Build OpenSSL
 	${TOPDIR}/build-droid/build-openssl.sh > "${LOGPATH}-OpenSSL.log"
 
-	# Build libssh2
-	${TOPDIR}/build-droid/build-libssh2.sh > "${LOGPATH}-libssh2.log"
-
-	# Build cURL
-	${TOPDIR}/build-droid/build-cURL.sh > "${LOGPATH}-cURL.log"
-
-	# Build libgsasl
-	${TOPDIR}/build-droid/build-libgsasl.sh > "${LOGPATH}-libgsasl.log"
-
 	# Build BOOST
 	${TOPDIR}/build-droid/build-boost.sh > "${LOGPATH}-boost.log"
-
-	# Build tinyxml
-	${TOPDIR}/build-droid/build-tinyxml.sh > "${LOGPATH}-tinyxml.log"
-
-	# Build expat
-	${TOPDIR}/build-droid/build-expat.sh > "${LOGPATH}-expat.log"
-
-	# Build yajl
-	${TOPDIR}/build-droid/build-yajl.sh > "${LOGPATH}-yajl.log"
-
-	# Build SQLCipher
-	${TOPDIR}/build-droid/build-sqlcipher.sh > "${LOGPATH}-sqlcipher.log"
-
-	# Build SOCI
-	${TOPDIR}/build-droid/build-soci.sh > "${LOGPATH}-soci.log"
-
-	# Build PION
-	${TOPDIR}/build-droid/build-pion.sh > "${LOGPATH}-pion.log"
 
 	# Remove junk
 	rm -rf "${ROOTDIR}/bin"
