@@ -1,0 +1,11 @@
+--- cxx/ismpf.cc	2013-05-20 18:59:56.000000000 +0400
++++ cxx/ismpf_changed.cc	2013-08-01 03:16:05.000000000 +0400
+@@ -45,7 +45,7 @@
+   bool ok = false;
+ 
+   // C decimal point, as expected by mpf_set_str
+-  const char *lconv_point = localeconv()->decimal_point;
++  const char *lconv_point = ".";
+ 
+   // C++ decimal point
+ #if HAVE_STD__LOCALE

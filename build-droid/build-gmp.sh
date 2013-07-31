@@ -50,8 +50,8 @@ export LDFLAGS="-Os -fpic -lc -Wl,-rpath-link=${SYSROOT}/usr/lib -L${SYSROOT}/us
 export CFLAGS="-Os -D_FILE_OFFSET_BITS=64 -pipe -isysroot ${SYSROOT} -I${ROOTDIR}/include"
 export CXXFLAGS="-Os -D_FILE_OFFSET_BITS=64 -pipe -isysroot ${SYSROOT} -I${ROOTDIR}/include"
 
-./configure --host=${ARCH}-android-linux --build=${PLATFORM} --prefix=${ROOTDIR} --without-readline
-
+./configure --host=${ARCH}-android-linux --build=${PLATFORM} --prefix=${ROOTDIR} --without-readline --enable-cxx
+patch -p0 < $TOPDIR/build-droid/gmp-patch
 # Fix libtool to not create versioned shared libraries
 mv "libtool" "libtool~"
 sed "s/library_names_spec=\".*\"/library_names_spec=\"~##~libname~##~{shared_ext}\"/" libtool~ > libtool~1
